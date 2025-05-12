@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from datetime import datetime
 
 app = Flask(__name__)
 
@@ -10,6 +11,18 @@ def hello():
 @app.route('/submit', methods=['POST'])
 def submit_form():
     data = request.get_json()
-    name = f"{data.get('name')}"
-    password = f"{data.get('password')}"
-    return jsonify(message=f'Your name is {name},password is {password}')
+    name = data.get('name')
+    password = data.get('password')
+    birthday = datetime.strptime((f"{data.get('birthday')}"), "%Y-%m-%d")
+    gender = data.get('gender')
+    height = data.get('height')
+    weight = data.get('weight')
+    
+    # bmi count
+    bmi = round(weight / height **2,2)
+    
+    # age count
+    today = datetime.today()
+    age = today.year - birthday.year - ((today.month, today.day) < (birthday.month, birthday.day))
+
+    return jsonify(message=f'Your AGE={age},BMI={bmi}')

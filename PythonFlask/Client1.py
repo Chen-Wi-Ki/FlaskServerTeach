@@ -2,7 +2,10 @@ import requests
 
 url = 'http://127.0.0.1:5000/submit'
 payload = {'name': 'wiki',
-           'password': '123456'}        
+           'password': '123456',
+           'birthday':'1990-04-24',
+           'height':1.75,
+           'weight':60.2}
 
 response = requests.post(url, json=payload)
 
