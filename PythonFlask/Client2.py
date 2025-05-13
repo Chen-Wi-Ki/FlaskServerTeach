@@ -11,17 +11,11 @@ print('Status Code:', response.status_code)
 #print('Response JSON:', response.json()['message'])
 data_list = response.json()['message']
 df = pd.DataFrame(data_list)
-print(df)
-
 df['build_time'] = pd.to_datetime(df['build_time'])
-
 df = df.dropna(subset=['bmi', 'build_time'])
-
 df = df.sort_values(by='build_time')
-
 plt.figure(figsize=(10, 5))
 plt.plot(df['build_time'], df['bmi'], marker='o', linestyle='-', color='blue', label='BMI')
-
 plt.title('BMI Trend Over Time')
 plt.xlabel('Build Time')
 plt.ylabel('BMI')
