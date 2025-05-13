@@ -6,6 +6,7 @@ payload = {'name': 'wiki',
            'gender':'male',
            'height':1.88,
            'weight':44}
+print('Json Code:', payload)
 response = requests.post(url, json=payload)
 print('Status Code:', response.status_code)
 print('Response JSON:', response.json())
