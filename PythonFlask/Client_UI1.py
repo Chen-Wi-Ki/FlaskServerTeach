@@ -59,6 +59,13 @@ def submit():
     
 submit_btn1 = tk.Button(root,command=submit,text='PassData',font=('Arial',30,'bold'),padx=10,pady=10,activeforeground='#f00')
 
+from Client2 import UserHistoricalInformation as UHI
+def submit_UHI():
+    UHI.BMIshow()
+    
+submit_btn2 = tk.Button(root,command=submit_UHI,text='UserBmiHistory',font=('Arial',30,'bold'),padx=10,pady=10,activeforeground='#f00')
+submit_btn2.grid(column=1, row=6)
+
 radio_btn1.grid(column=0, row=0) 
 radio_btn2.grid(column=1, row=0)
 labelName.grid(column=0, row=1)
@@ -71,8 +78,8 @@ labelWeight.grid(column=0, row=4)
 entryWeight.grid(column=1, row=4)
 labelBirthday.grid(column=0, row=5)
 entryBirthday.grid(column=1, row=5)
-submit_btn1.grid(column=1, row=6)
+submit_btn1.grid(column=0, row=6)
 Jsonlabel.grid(column=1, row=7)
 Serverlabel.grid(column=1, row=8)
-# 顯示按鈕
-root.mainloop()  # 放在主迴圈中
+
+root.mainloop()
